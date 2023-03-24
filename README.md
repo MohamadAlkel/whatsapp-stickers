@@ -1,0 +1,2 @@
+# whatsapp-stickers
+test
