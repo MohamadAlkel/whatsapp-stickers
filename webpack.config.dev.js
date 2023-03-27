@@ -1,58 +1,58 @@
-const path = require("path");
-const webpack = require("webpack");
-const { BaseHrefWebpackPlugin } = require("base-href-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
-const autoprefixer = require("autoprefixer");
-const zlib = require("zlib");
-const CompressionPlugin = require("compression-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const autoprefixer = require('autoprefixer');
+const zlib = require('zlib');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   context: __dirname,
-  target: "web",
-  devtool: "source-map",
+  target: 'web',
+  devtool: 'source-map',
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
     historyApiFallback: true,
     port: 3000,
-    open: true
+    open: true,
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       [path.resolve(__dirname, '....')]: false,
-    }
+    },
   },
   entry: {
-    app: ["./src/index.tsx"]
+    app: ['./src/index.tsx'],
   },
   output: {
-    filename: "[name].js",
-    chunkFilename: "js/[name].[contenthash].bundle.js",
-    publicPath: "/",
-    path: path.resolve(__dirname, "dist")
+    filename: '[name].js',
+    chunkFilename: 'js/[name].[contenthash].bundle.js',
+    publicPath: '/',
+    path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(
-        process.env.NODE_ENV || "development"
-      ), 
-      "process.env.IS_BROWSER": true,
+      'process.env.NODE_ENV': JSON.stringify(
+        process.env.NODE_ENV || 'development'
+      ),
+      'process.env.IS_BROWSER': true,
     }),
     new Dotenv(),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "index.html"
+      template: './src/index.html',
+      filename: 'index.html',
     }),
     new BaseHrefWebpackPlugin({ baseHref: '/' }),
     new CopyWebpackPlugin({
-      patterns: [{ from: "./src/manifest.json" }]
+      patterns: [{ from: './src/manifest.json' }],
     }),
     new CompressionPlugin({
-      filename: "[path][base].br",
-      algorithm: "brotliCompress",
+      filename: '[path][base].br',
+      algorithm: 'brotliCompress',
       test: /\.(js|css|html|svg)$/,
       compressionOptions: {
         params: {
@@ -66,19 +66,20 @@ module.exports = {
   ],
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.tsx?$/, loader: 'ts-loader' },
       {
-        test: /(\.css|\.scss|\.sass)$/, use: [
+        test: /(\.css|\.scss|\.sass)$/,
+        use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [autoprefixer()]
-            }
+              plugins: () => [autoprefixer()],
+            },
           },
-          { loader: 'sass-loader' }
-        ]
+          { loader: 'sass-loader' },
+        ],
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
@@ -88,15 +89,15 @@ module.exports = {
           options: {
             name: '[name].[ext]',
             outputPath: 'assets/images/',
-          }
-        }
+          },
+        },
       },
       {
         test: /\.ico$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-        }
+        },
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
@@ -104,8 +105,8 @@ module.exports = {
         options: {
           prefix: 'font/',
           limit: 5000,
-          name: 'assets/fonts/[name].[ext]'
-        }
+          name: 'assets/fonts/[name].[ext]',
+        },
       },
       {
         test: /\.(woff|woff2)$/,
@@ -113,8 +114,8 @@ module.exports = {
         options: {
           prefix: 'font/',
           limit: 5000,
-          name: 'assets/fonts/[name].[ext]'
-        }
+          name: 'assets/fonts/[name].[ext]',
+        },
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
@@ -122,8 +123,8 @@ module.exports = {
         options: {
           limit: 10000,
           mimetype: 'application/octet-stream',
-          name: 'assets/fonts/[name].[ext]'
-        }
+          name: 'assets/fonts/[name].[ext]',
+        },
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
@@ -131,13 +132,13 @@ module.exports = {
         options: {
           name: '[name].[ext]',
           outputPath: 'assets/svgs/',
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
   node: {
     global: true,
     __filename: false,
     __dirname: false,
-  }
+  },
 };

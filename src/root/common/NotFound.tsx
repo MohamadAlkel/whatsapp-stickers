@@ -1,5 +1,5 @@
-import React, { FC, ReactElement } from "react";
-import { NotFoundWrapper } from "./NotFound.style";
+import React, { FC, ReactElement } from 'react';
+import { NotFoundWrapper } from './NotFound.style';
 
 const NotFound: FC = (): ReactElement<void> => {
   return (

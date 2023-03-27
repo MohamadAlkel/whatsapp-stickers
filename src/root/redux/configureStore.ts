@@ -1,13 +1,13 @@
-import appReducer from "./reducer";
-import createAllMiddleware from "./middlewares";
-import { applyMiddleware, compose, createStore } from "redux";
+import appReducer from './reducer';
+import createAllMiddleware from './middlewares';
+import { applyMiddleware, compose, createStore } from 'redux';
 
 const isDebug = () => {
-  const isDevelopment = process.env.NODE_ENV !== "production";
+  const isDevelopment = process.env.NODE_ENV !== 'production';
   try {
     return (
       process.env.IS_BROWSER &&
-      (isDevelopment || localStorage.getItem("redux-debug"))
+      (isDevelopment || localStorage.getItem('redux-debug'))
     );
   } catch (e) {
     return false;
@@ -25,10 +25,10 @@ export default function configureStore({ initialState }) {
 
   const store = createReduxStore(createStore)(appReducer, initialState);
 
-  if (process.env.NODE_ENV !== "production" && (module as any).hot) {
+  if (process.env.NODE_ENV !== 'production' && (module as any).hot) {
     // Enable Webpack hot module replacement for reducers.
-    (module as any).hot.accept("./reducer", () => {
-      const nextAppReducer = require("./reducer");
+    (module as any).hot.accept('./reducer', () => {
+      const nextAppReducer = require('./reducer');
       store.replaceReducer(nextAppReducer);
     });
   }

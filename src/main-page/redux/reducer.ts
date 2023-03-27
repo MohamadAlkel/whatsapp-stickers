@@ -1,18 +1,16 @@
-import { TRIGGER_PIN, VERIFY_PIN, UPDATE_USER_ID } from "./constants";
-import { InitialStateModule } from "../helper/typeHelper";
-
+import { TRIGGER_PIN, VERIFY_PIN, UPDATE_USER_ID } from './constants';
+import { InitialStateModule } from '../helper/typeHelper';
 
 export const initialState: InitialStateModule = {
-  userId: "",
+  userId: '',
   isFetchingTriggerPin: false,
-  isFetchingVerifyPin: false
+  isFetchingVerifyPin: false,
 };
 
 export default function userStateReducer(
   state = initialState,
   { type, payload }
 ) {
-
   switch (type) {
     case UPDATE_USER_ID:
       return {
@@ -34,21 +32,21 @@ export default function userStateReducer(
         ...state,
         isFetchingVerifyPin: false,
       };
-      case `${VERIFY_PIN}_START`:
-        return {
-          ...state,
-          isFetchingVerifyPin: true,
-        };
-      case `${VERIFY_PIN}_SUCCESS`:
-        return {
-          ...state,
-          isFetchingVerifyPin: false,
-        };
-      case `${VERIFY_PIN}_ERROR`:
-        return {
-          ...state,
-          isFetchingVerifyPin: false,
-        };
+    case `${VERIFY_PIN}_START`:
+      return {
+        ...state,
+        isFetchingVerifyPin: true,
+      };
+    case `${VERIFY_PIN}_SUCCESS`:
+      return {
+        ...state,
+        isFetchingVerifyPin: false,
+      };
+    case `${VERIFY_PIN}_ERROR`:
+      return {
+        ...state,
+        isFetchingVerifyPin: false,
+      };
   }
   return state;
 }

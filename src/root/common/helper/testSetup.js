@@ -13,7 +13,8 @@ ignoreStyles.default([
 global.isRunningTest = true;
 global.React = React;
 const { JSDOM } = jsdom;
-const { document } = (new JSDOM('<!doctype html><html><body></body></html>')).window;
+const { document } = new JSDOM('<!doctype html><html><body></body></html>')
+  .window;
 global.window = document.defaultView;
 global.navigator = global.window.navigator;
 global.window.matchMedia =

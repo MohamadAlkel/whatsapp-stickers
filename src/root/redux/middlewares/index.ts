@@ -1,14 +1,14 @@
-import createLogger from "redux-logger";
-import promiseMiddleware from "redux-promise-middleware";
+import createLogger from 'redux-logger';
+import promiseMiddleware from 'redux-promise-middleware';
 
 const injectMiddleware = () => (store) => (next) => (action) =>
-  next(typeof action === "function" ? action({ store }) : action);
+  next(typeof action === 'function' ? action({ store }) : action);
 
 const createBaseMiddleware = () => {
   return [
     injectMiddleware(),
     promiseMiddleware({
-      promiseTypeSuffixes: ["START", "SUCCESS", "ERROR"],
+      promiseTypeSuffixes: ['START', 'SUCCESS', 'ERROR'],
     }),
   ];
 };

@@ -1,12 +1,12 @@
-import * as React from "react";
-import { render } from "react-dom";
-import App from "./root/App";
-import "./favicon.ico";
-import "./index.scss";
+import * as React from 'react';
+import { render } from 'react-dom';
+import App from './root/App';
+import './favicon.ico';
+import './index.scss';
 
 declare const window: any;
 
 render(
   <App initialState={window.__PRELOADED_STATE__} />,
-  document.getElementById("whatsapp-stickers") as HTMLElement
+  document.getElementById('whatsapp-stickers') as HTMLElement
 );

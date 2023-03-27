@@ -1,36 +1,36 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
-const autoprefixer = require("autoprefixer");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const zlib = require("zlib");
-const CompressionPlugin = require("compression-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const autoprefixer = require('autoprefixer');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const zlib = require('zlib');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-  mode: "production",
+  mode: 'production',
   context: __dirname,
-  target: "web",
+  target: 'web',
   devtool: false,
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   entry: {
-    app: ["../src/index.tsx"],
+    app: ['../src/index.tsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "../src/index.html",
-      filename: "./index.html",
+      template: '../src/index.html',
+      filename: './index.html',
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: "../src/manifest.json" }],
+      patterns: [{ from: '../src/manifest.json' }],
     }),
     new CaseSensitivePathsPlugin(),
     new Dotenv(),
     new CompressionPlugin({
-      filename: "[path][base].br",
-      algorithm: "brotliCompress",
+      filename: '[path][base].br',
+      algorithm: 'brotliCompress',
       test: /\.(js|css|html|svg)$/,
       compressionOptions: {
         params: {
@@ -53,72 +53,72 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.tsx?$/, loader: 'ts-loader' },
       {
         test: /(\.css|\.scss|\.sass)$/,
         use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" },
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
               plugins: () => [autoprefixer()],
             },
           },
-          { loader: "sass-loader" },
+          { loader: 'sass-loader' },
         ],
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          name: "[name].[ext]",
+          name: '[name].[ext]',
           options: {
-            name: "[name].[ext]",
-            outputPath: "assets/images/",
+            name: '[name].[ext]',
+            outputPath: 'assets/images/',
           },
         },
       },
       {
         test: /\.ico$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          name: "[name].[ext]",
+          name: '[name].[ext]',
         },
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          prefix: "font/",
+          prefix: 'font/',
           limit: 5000,
-          name: "assets/fonts/[name].[ext]",
+          name: 'assets/fonts/[name].[ext]',
         },
       },
       {
         test: /\.(woff|woff2)$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          prefix: "font/",
+          prefix: 'font/',
           limit: 5000,
-          name: "assets/fonts/[name].[ext]",
+          name: 'assets/fonts/[name].[ext]',
         },
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
           limit: 10000,
-          mimetype: "application/octet-stream",
-          name: "assets/fonts/[name].[ext]",
+          mimetype: 'application/octet-stream',
+          name: 'assets/fonts/[name].[ext]',
         },
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          name: "[name].[ext]",
-          outputPath: "assets/svgs/",
+          name: '[name].[ext]',
+          outputPath: 'assets/svgs/',
         },
       },
     ],

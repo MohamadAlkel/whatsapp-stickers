@@ -1,10 +1,8 @@
-import React, { FC, ReactElement } from "react";
-import { Route, Routes } from "react-router-dom";
-import NotFound from "../root/common/NotFound";
+import React, { FC, ReactElement } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import NotFound from '../root/common/NotFound';
 
-const MainPageRoute = React.lazy(
-  () => import("./components/MainPageRoute")
-);
+const MainPageRoute = React.lazy(() => import('./components/MainPageRoute'));
 
 const CreateRoute: FC = (): ReactElement<void> => {
   return (
@@ -13,7 +11,7 @@ const CreateRoute: FC = (): ReactElement<void> => {
         path="/"
         element={
           <React.Suspense fallback={<p>Loading....</p>}>
-            <MainPageRoute showHome/>
+            <MainPageRoute showHome />
           </React.Suspense>
         }
       />
@@ -21,7 +19,7 @@ const CreateRoute: FC = (): ReactElement<void> => {
         path="/fun"
         element={
           <React.Suspense fallback={<p>Loading....</p>}>
-            <MainPageRoute showFun/>
+            <MainPageRoute showFun />
           </React.Suspense>
         }
       />
@@ -29,7 +27,7 @@ const CreateRoute: FC = (): ReactElement<void> => {
         path="/romance"
         element={
           <React.Suspense fallback={<p>Loading....</p>}>
-            <MainPageRoute showRomance/>
+            <MainPageRoute showRomance />
           </React.Suspense>
         }
       />
@@ -37,7 +35,7 @@ const CreateRoute: FC = (): ReactElement<void> => {
         path="/pin"
         element={
           <React.Suspense fallback={<p>Loading....</p>}>
-            <MainPageRoute showPin/>
+            <MainPageRoute showPin />
           </React.Suspense>
         }
       />
@@ -45,7 +43,7 @@ const CreateRoute: FC = (): ReactElement<void> => {
         path="/thanks"
         element={
           <React.Suspense fallback={<p>Loading....</p>}>
-            <MainPageRoute showThanks/>
+            <MainPageRoute showThanks />
           </React.Suspense>
         }
       />
