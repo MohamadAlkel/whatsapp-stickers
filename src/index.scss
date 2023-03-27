@@ -1,0 +1,28 @@
+/* Import the Roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif, "Helvetica Neue", Helvetica, Arial, "PingFang HK",
+    STHeitiTC-Light, Meiryo, "Microsoft JhengHei", sans-serif;
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --secondary-color: #319379;
+  --app-background-color: #59BBA6;
+
+  // TODO: use rem instead of px
+  --body: 1rem;
+  --subheading: 1.125rem;
+  --heading: 1.25rem;
+  --subtitle: 1.5rem;
+  --title: 2rem;
+}
+
+body {
+  background-color: var(--app-background-color);
+}
