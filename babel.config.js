@@ -1,8 +1,10 @@
 module.exports = {
-    plugins: [
-        '@babel/plugin-transform-runtime',
-      ],
-    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+  plugins: ['@babel/plugin-transform-runtime'],
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-react',
+    '@babel/preset-typescript',
+  ],
 };
 
-require('./src/components/common/helper/testSetup');
+require('./src/root/common/helper/testSetup');

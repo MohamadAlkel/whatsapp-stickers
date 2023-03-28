@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { PinInputWrapper } from './PinInput.style';
 
-const PinInput = ({ onPinChange }) => {
-  const [pin, setPin] = useState(['', '', '', '']);
+const PinInput = ({ onPinChange, pin }) => {
   const inputRefs = [];
 
   const handleInputChange = (index, event) => {
     const { value } = event.target;
     if (index === 3 && value.length > 1) return;
-    setPin((prevPin) => {
+    onPinChange((prevPin) => {
       const newPin = [...prevPin];
       newPin[index] = value;
-      onPinChange(newPin);
       return newPin;
     });
 
@@ -30,8 +28,7 @@ const PinInput = ({ onPinChange }) => {
     event.preventDefault();
     const pastedData = event.clipboardData.getData('text/plain');
     const pastedPin = pastedData.split('').slice(0, 4);
-    setPin(pastedPin.concat(Array(4 - pastedPin.length).fill('')));
-    onPinChange(pastedPin);
+    onPinChange(pastedPin.concat(Array(4 - pastedPin.length).fill('')));
     inputRefs[0].focus();
   };
 

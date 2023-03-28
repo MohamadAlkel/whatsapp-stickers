@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ReviewCardWrapper = styled.p`
+export const ReviewCardWrapper = styled.div`
   margin: auto;
   width: 299px;
   height: 84px;

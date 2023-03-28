@@ -28,7 +28,8 @@ export const PinForm: ConnectedComponent<any, any> = connect(
   mapDispatchToProps
 )(({ isFetchingVerifyPin, verifyPin, userId }) => {
   const [errorMsg, setErrorMsg] = useState('');
-  const [pin, setPin] = useState([]);
+  const [pin, setPin] = useState(['', '', '', '']);
+
   const navigate = useNavigate();
 
   const onPinChange = (newStatus) => {
@@ -64,7 +65,7 @@ export const PinForm: ConnectedComponent<any, any> = connect(
         <br />
         please enter it below to confirm subscription!
       </FormImgSubtitle>
-      <PinInput onPinChange={onPinChange} />
+      <PinInput pin={pin} onPinChange={onPinChange} />
       <Button
         onClick={onClickConfirm}
         position="284px"

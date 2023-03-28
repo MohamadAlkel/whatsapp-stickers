@@ -11,7 +11,7 @@ const ReviewCard = ({ comment, username, starNumber = 4 }) => {
   const NumberList = useMemo(() => {
     const listItems = [];
     for (let i = 0; i < starNumber; i++) {
-      listItems.push(<Star />);
+      listItems.push(<Star key={i} />);
     }
     return <>{listItems}</>;
   }, [starNumber]);

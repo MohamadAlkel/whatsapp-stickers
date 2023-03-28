@@ -19,7 +19,7 @@ export default class PhoneService {
       return res?.data;
     } catch (error) {
       // we can log error cloudwatch but for now we'll just log it here
-      console.log('Error', error);
+      // console.log('Error', error);
     }
   };
 
@@ -31,7 +31,7 @@ export default class PhoneService {
       return res?.data;
     } catch (error) {
       // we can log error cloudwatch but for now we'll just log it here
-      console.log('Error', error);
+      // console.log('Error', error);
     }
   };
 }
